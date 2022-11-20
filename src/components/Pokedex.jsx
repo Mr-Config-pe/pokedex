@@ -15,28 +15,44 @@ const Pokedex = () => {
 
     const [typePoke, setTypePoke] = useState([]);
 
-    //Paginacion
+    // Inicio Paginacion
 
-    // const pokemonPagination = pokemon.slice(0, 5)
+    const [page, setPage] = useState(1);
+    const pokemonsPerPage = 5;
+    const lastIndex = page * pokemonsPerPage;
+    const firstIndex = lastIndex - pokemonsPerPage;
+    const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
+    const totalPage = Math.ceil(pokemon.length / pokemonsPerPage);
+
+
+    // const totalPage2 = 10;
+    //Numeros
+
+    const numberPagination = []
+    for (let i = 1; i <= totalPage; i++){
+        numberPagination.push(i)
+    }
+
+    //Fin Paginacion
 
     useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20') //Max : 1154
+        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=100') //Max : 1154
             .then(res => setPokemon(res.data.results))
 
         axios.get('https://pokeapi.co/api/v2/type')
             .then(res => setTypePoke(res.data.results))
 
-            
-        }, [])
-        
-        // console.log(typePoke)
-        
-        const navigate = useNavigate();
-        
-        //Funcion de Filtrado de Pokemones
-        
-        const searchPokemon = (() => {
-            
+
+    }, [])
+
+    console.log(numberPagination)
+
+    const navigate = useNavigate();
+
+    //Funcion de Filtrado de Pokemones
+
+    const searchPokemon = (() => {
+
         const pokeIndex = pokemon.findIndex(searchIndex => searchIndex.name === inputSearch)
 
         if (inputSearch > 0 && inputSearch <= pokemon.length) {
@@ -50,14 +66,14 @@ const Pokedex = () => {
     })
 
     //Funcion para filtrar los tipos
-    
+
     const filterType = ((e) => {
-        const url = e.target.value;     
-            axios.get(url)
-                .then(res => setPokemon(res.data.pokemon));
-        
+        const url = e.target.value;
+        axios.get(url)
+            .then(res => setPokemon(res.data.pokemon));
+
     })
-    
+
     // console.log(pokemonSelect)
     // console.log(pokemon)
     return (
@@ -70,6 +86,7 @@ const Pokedex = () => {
                     onChange={(e => setInputSearch(e.target.value))}
                     value={inputSearch} />
                 <button onClick={searchPokemon}>Search</button>
+
                 <select onChange={filterType} name="" id="">
                     {typePoke.map(search => (
                         <option
@@ -80,9 +97,16 @@ const Pokedex = () => {
                     ))}
                 </select>
             </div>
+            <div>
+                <button onClick={() => setPage(page -1)} disabled={page === 1}>Prev Page</button>
+                {numberPagination.map(number =>(
+                    <button key={number} onClick={() => setPage(number)}>{number}</button>
+                ))}
+                <button onClick={() => setPage(page + 1)} disabled={page === totalPage}>Nex Page</button>
+            </div>
             <div className="container-pokedex">
                 {
-                    pokemon.map(search => (
+                    pokemonPagination.map(search => (
                         <PokemonCard
                             url={search.url || search.pokemon.url}
                             key={search.url || search.pokemon.url} />

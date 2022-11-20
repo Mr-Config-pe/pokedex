@@ -24,19 +24,34 @@ const Pokedex = () => {
     const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
     const totalPage = Math.ceil(pokemon.length / pokemonsPerPage);
 
+    // Division de Paginacion
 
-    // const totalPage2 = 10;
-    //Numeros
-
+    const [totalinit, setTotalInit] = useState(1);
+    const [totalPage2, setTotalPage2] = useState(10);
+ 
     const numberPagination = []
-    for (let i = 1; i <= totalPage; i++){
+    for (let i = totalinit; i <= totalPage2; i++) {
         numberPagination.push(i)
     }
+
+    let nextPage10 = (() => {
+        setTotalInit(totalinit + 1)
+        setTotalPage2(totalPage2 + 1)
+        setPage(page + 1)
+       
+    })
+
+    let previewPagex1 = (()=>{
+        setTotalInit(totalinit - 1)
+        setTotalPage2(totalPage2 - 1)
+        setPage(page - 1)
+       
+    })
 
     //Fin Paginacion
 
     useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=100') //Max : 1154
+        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=200') //Max : 1154
             .then(res => setPokemon(res.data.results))
 
         axios.get('https://pokeapi.co/api/v2/type')
@@ -45,7 +60,7 @@ const Pokedex = () => {
 
     }, [])
 
-    console.log(numberPagination)
+    // console.log(numberPagination)
 
     const navigate = useNavigate();
 
@@ -98,11 +113,11 @@ const Pokedex = () => {
                 </select>
             </div>
             <div>
-                <button onClick={() => setPage(page -1)} disabled={page === 1}>Prev Page</button>
-                {numberPagination.map(number =>(
+                <button onClick={page > 10 ?  previewPagex1 : () => setPage(page - 1)} disabled={page === 1}>Prev Page</button>
+                {numberPagination.map(number => (
                     <button key={number} onClick={() => setPage(number)}>{number}</button>
                 ))}
-                <button onClick={() => setPage(page + 1)} disabled={page === totalPage}>Nex Page</button>
+                <button onClick={ page < 10 ? () => setPage(page + 1) : nextPage10 } disabled={page === totalPage}>Nex Page</button>
             </div>
             <div className="container-pokedex">
                 {

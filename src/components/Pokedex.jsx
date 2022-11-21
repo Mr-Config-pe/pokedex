@@ -18,7 +18,7 @@ const Pokedex = () => {
     // Inicio Paginacion
 
     const [page, setPage] = useState(1);
-    const pokemonsPerPage = 5;
+    const pokemonsPerPage = 10;
     const lastIndex = page * pokemonsPerPage;
     const firstIndex = lastIndex - pokemonsPerPage;
     const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
@@ -44,36 +44,89 @@ const Pokedex = () => {
 
     let previewPagex1 = (()=>{
 
-        let variablex = [];
-
-
-        if ( page <= 10){
+        if ( page < 10) {
             setTotalInit(1)
             setTotalPage2(10)
             
-            
-
-        } else if ( totalPage2 === page){
+        } else if (totalPage2 - totalinit <= 10) {
             setTotalInit(totalinit - 1)
             setTotalPage2(totalPage2 - 1)
             setPage(page - 1)
-            variablex.push(totalPage2)
+            // variablex.push(page)
+            setTotalInit(page - 10)
+            setTotalPage2(page -1)
+            console.log(totalinit)
             console.log(totalPage2)
-           console.log(totalPage3)
-           console.log(variablex)
-            
-        } else{
-            variablex.push(totalPage2)
-            setTotalPage2(variablex[0])
-            setPage(variablex[0])
-        //    alert("algo anda mal")
-           console.log(totalPage2)
-           console.log(totalPage3)
-           console.log(variablex)
+            console.log(page)
+        } else {
+            alert("Algo raro paso")
         }
+
+
+        // if ( totalPage2 - totalinit <= 10){
+            
+        //     setTotalInit(totalinit - 1)
+        //     setTotalPage2(totalPage2 - 1)
+        //     setPage(page - 1)
+        //     // variablex.push(page)
+        //     setTotalInit(page - 10)
+        //     setTotalPage2(page -1)
+        //     console.log(totalinit)
+        //     console.log(totalPage2)
+        //     console.log(page)
+        //     // console.log(variablex)
+
+        // } else if ( page > 10){
+           
+        //     alert("probando alert")
+        //     console.log(totalinit)
+        //     console.log(totalPage2)
+            
+        // } else{
+            
+
+        //     alert("probando")
+        //     // variablex.push(totalPage2)
+        //     // setTotalInit(page - 10)
+        //     // setTotalPage2(page)
+        // //    setPage(page - 1)
+        //     // setPage(variablex[0])
+            
+        //     // setTotalInit(totalinit - 1)
+        //     // setTotalPage2(totalPage2 - 1)
+        //     // setPage(page - 1)
+
+
+            
+        // //    alert("algo anda mal")
+            
+        //    console.log(totalPage2)
+        //    console.log(totalPage3)
+        //    console.log(variablex)
+        //    console.log(page)
+        // }
         // setPage(totalPage3)
       
        
+    })
+
+    let reviewPagex2 = (()=> {
+
+       if (page === 1){
+            alert("llego a 1")
+           setTotalInit(totalinit - 1)
+           setTotalPage2(totalPage2 - 1)
+           setPage(page - 1)
+           console.log(page)
+
+       } else {
+        setTotalInit(1)
+        setTotalPage2(10)
+       }
+       
+
+        // () => setPage(page - 1)
+
     })
 
     //Fin Paginacion
@@ -141,7 +194,7 @@ const Pokedex = () => {
                 </select>
             </div>
             <div>
-                <button onClick={page > 10 ?  previewPagex1 : () => setPage(page - 1)} disabled={page === 1}>Prev Page</button>
+                <button onClick={page > 10 ?  previewPagex1 : reviewPagex2 } disabled={page === 1}>Prev Page</button>
                 {numberPagination.map(number => (
                     <button key={number} onClick={() => setPage(number)}>{number}</button>
                 ))}

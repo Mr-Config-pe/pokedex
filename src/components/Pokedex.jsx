@@ -44,11 +44,7 @@ const Pokedex = () => {
 
     let previewPagex1 = (()=>{
 
-        if ( page < 10) {
-            setTotalInit(1)
-            setTotalPage2(10)
-            
-        } else if (totalPage2 - totalinit <= 10) {
+         if (totalPage2 - totalinit <= 10) {
             setTotalInit(totalinit - 1)
             setTotalPage2(totalPage2 - 1)
             setPage(page - 1)
@@ -62,66 +58,24 @@ const Pokedex = () => {
             alert("Algo raro paso")
         }
 
-
-        // if ( totalPage2 - totalinit <= 10){
-            
-        //     setTotalInit(totalinit - 1)
-        //     setTotalPage2(totalPage2 - 1)
-        //     setPage(page - 1)
-        //     // variablex.push(page)
-        //     setTotalInit(page - 10)
-        //     setTotalPage2(page -1)
-        //     console.log(totalinit)
-        //     console.log(totalPage2)
-        //     console.log(page)
-        //     // console.log(variablex)
-
-        // } else if ( page > 10){
-           
-        //     alert("probando alert")
-        //     console.log(totalinit)
-        //     console.log(totalPage2)
-            
-        // } else{
-            
-
-        //     alert("probando")
-        //     // variablex.push(totalPage2)
-        //     // setTotalInit(page - 10)
-        //     // setTotalPage2(page)
-        // //    setPage(page - 1)
-        //     // setPage(variablex[0])
-            
-        //     // setTotalInit(totalinit - 1)
-        //     // setTotalPage2(totalPage2 - 1)
-        //     // setPage(page - 1)
-
-
-            
-        // //    alert("algo anda mal")
-            
-        //    console.log(totalPage2)
-        //    console.log(totalPage3)
-        //    console.log(variablex)
-        //    console.log(page)
-        // }
-        // setPage(totalPage3)
-      
        
     })
 
     let reviewPagex2 = (()=> {
 
-       if (page === 1){
-            alert("llego a 1")
-           setTotalInit(totalinit - 1)
-           setTotalPage2(totalPage2 - 1)
-           setPage(page - 1)
+       if (page > 1){
+            setPage(page - 1)
+
+            // setTotalInit(1)
+            // setTotalPage2(10)
+
            console.log(page)
 
        } else {
+
         setTotalInit(1)
         setTotalPage2(10)
+      
        }
        
 

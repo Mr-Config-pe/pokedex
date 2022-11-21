@@ -29,7 +29,7 @@ const Pokedex = () => {
     const [totalinit, setTotalInit] = useState(1);
     const [totalPage2, setTotalPage2] = useState(10);
     const [totalPage3, setTotalPage3] = useState(0);
- 
+
     const numberPagination = []
     for (let i = totalinit; i <= totalPage2; i++) {
         numberPagination.push(i)
@@ -39,18 +39,18 @@ const Pokedex = () => {
         setTotalInit(totalinit + 1)
         setTotalPage2(totalPage2 + 1)
         setPage(page + 1)
-       
+
     })
 
-    let previewPagex1 = (()=>{
+    let previewPagex1 = (() => {
 
-         if (totalPage2 - totalinit <= 10) {
+        if (totalPage2 - totalinit <= 10) {
             setTotalInit(totalinit - 1)
             setTotalPage2(totalPage2 - 1)
             setPage(page - 1)
             // variablex.push(page)
             setTotalInit(page - 10)
-            setTotalPage2(page -1)
+            setTotalPage2(page - 1)
             console.log(totalinit)
             console.log(totalPage2)
             console.log(page)
@@ -58,26 +58,25 @@ const Pokedex = () => {
             alert("Algo raro paso")
         }
 
-       
+
     })
 
-    let reviewPagex2 = (()=> {
+    let reviewPagex2 = (() => {
 
-       if (page > 1){
+        if (page > 1) {
+
+            setTotalInit(1)
+            setTotalPage2(10)
             setPage(page - 1)
+            console.log(page)
 
-            // setTotalInit(1)
-            // setTotalPage2(10)
+        } else {
 
-           console.log(page)
+            setTotalInit(1)
+            setTotalPage2(10)
 
-       } else {
+        }
 
-        setTotalInit(1)
-        setTotalPage2(10)
-      
-       }
-       
 
         // () => setPage(page - 1)
 
@@ -118,10 +117,12 @@ const Pokedex = () => {
     //Funcion para filtrar los tipos
 
     const filterType = ((e) => {
+        
         const url = e.target.value;
         axios.get(url)
-            .then(res => setPokemon(res.data.pokemon));
-
+        .then(res => setPokemon(res.data.pokemon));
+        
+        
     })
 
     // console.log(pokemonSelect)
@@ -148,11 +149,11 @@ const Pokedex = () => {
                 </select>
             </div>
             <div>
-                <button onClick={page > 10 ?  previewPagex1 : reviewPagex2 } disabled={page === 1}>Prev Page</button>
+                <button onClick={page > 10 ? previewPagex1 : reviewPagex2} disabled={page === 1}>Prev Page</button>
                 {numberPagination.map(number => (
                     <button key={number} onClick={() => setPage(number)}>{number}</button>
                 ))}
-                <button onClick={ page < 10 ? () => setPage(page + 1) : nextPage10 } disabled={page === totalPage}>Nex Page</button>
+                <button onClick={page < 10 ? () => setPage(page + 1) : nextPage10} disabled={page === totalPage}>Nex Page</button>
             </div>
             <div className="container-pokedex">
                 {

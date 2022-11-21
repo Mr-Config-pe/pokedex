@@ -18,7 +18,7 @@ const Pokedex = () => {
     // Inicio Paginacion
 
     const [page, setPage] = useState(1);
-    const pokemonsPerPage = 10;
+    const pokemonsPerPage = 5;
     const lastIndex = page * pokemonsPerPage;
     const firstIndex = lastIndex - pokemonsPerPage;
     const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
@@ -35,10 +35,20 @@ const Pokedex = () => {
         numberPagination.push(i)
     }
 
-    let nextPage10 = (() => {
+    let nextPagex1 = (() => {
+
+        if(totalPage2 - totalinit <=10 && totalPage2 < totalPage){
         setTotalInit(totalinit + 1)
         setTotalPage2(totalPage2 + 1)
+        console.log(totalPage2)
+        console.log(totalinit)
         setPage(page + 1)
+        } else {
+            
+            setPage(page + 1)
+            
+        }
+        
 
     })
 
@@ -57,7 +67,6 @@ const Pokedex = () => {
         } else {
             alert("Algo raro paso")
         }
-
 
     })
 
@@ -117,12 +126,12 @@ const Pokedex = () => {
     //Funcion para filtrar los tipos
 
     const filterType = ((e) => {
-        
+
         const url = e.target.value;
         axios.get(url)
-        .then(res => setPokemon(res.data.pokemon));
-        
-        
+            .then(res => setPokemon(res.data.pokemon));
+
+
     })
 
     // console.log(pokemonSelect)
@@ -153,7 +162,7 @@ const Pokedex = () => {
                 {numberPagination.map(number => (
                     <button key={number} onClick={() => setPage(number)}>{number}</button>
                 ))}
-                <button onClick={page < 10 ? () => setPage(page + 1) : nextPage10} disabled={page === totalPage}>Nex Page</button>
+                <button onClick={page < 10 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage}>Nex Page</button>
             </div>
             <div className="container-pokedex">
                 {

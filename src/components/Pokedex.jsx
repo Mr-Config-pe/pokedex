@@ -28,6 +28,7 @@ const Pokedex = () => {
 
     const [totalinit, setTotalInit] = useState(1);
     const [totalPage2, setTotalPage2] = useState(10);
+    const [totalPage3, setTotalPage3] = useState(0);
  
     const numberPagination = []
     for (let i = totalinit; i <= totalPage2; i++) {
@@ -42,9 +43,36 @@ const Pokedex = () => {
     })
 
     let previewPagex1 = (()=>{
-        setTotalInit(totalinit - 1)
-        setTotalPage2(totalPage2 - 1)
-        setPage(page - 1)
+
+        let variablex = [];
+
+
+        if ( page <= 10){
+            setTotalInit(1)
+            setTotalPage2(10)
+            
+            
+
+        } else if ( totalPage2 === page){
+            setTotalInit(totalinit - 1)
+            setTotalPage2(totalPage2 - 1)
+            setPage(page - 1)
+            variablex.push(totalPage2)
+            console.log(totalPage2)
+           console.log(totalPage3)
+           console.log(variablex)
+            
+        } else{
+            variablex.push(totalPage2)
+            setTotalPage2(variablex[0])
+            setPage(variablex[0])
+        //    alert("algo anda mal")
+           console.log(totalPage2)
+           console.log(totalPage3)
+           console.log(variablex)
+        }
+        // setPage(totalPage3)
+      
        
     })
 

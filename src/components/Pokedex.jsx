@@ -18,7 +18,7 @@ const Pokedex = () => {
     // Inicio Paginacion
 
     const [page, setPage] = useState(1);
-    const pokemonsPerPage = 5;
+    const pokemonsPerPage = 8;
     const lastIndex = page * pokemonsPerPage;
     const firstIndex = lastIndex - pokemonsPerPage;
     const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
@@ -94,7 +94,7 @@ const Pokedex = () => {
     //Fin Paginacion
 
     useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=200') //Max : 1154
+        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=400') //Max : 1154
             .then(res => setPokemon(res.data.results))
 
         axios.get('https://pokeapi.co/api/v2/type')
@@ -135,7 +135,7 @@ const Pokedex = () => {
     })
 
     // console.log(pokemonSelect)
-    // console.log(pokemon)
+    console.log(pokemon)
     return (
         <div id='pokedex'>
             <h1 className='pokedex-name'>Bienvenido {userName} a Pokedex</h1>

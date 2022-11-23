@@ -18,7 +18,7 @@ const Pokedex = () => {
     // Inicio Paginacion
 
     const [page, setPage] = useState(1);
-    const pokemonsPerPage = 8;
+    const pokemonsPerPage = 25;
     const lastIndex = page * pokemonsPerPage;
     const firstIndex = lastIndex - pokemonsPerPage;
     const pokemonPagination = pokemon.slice(firstIndex, lastIndex);
@@ -37,18 +37,18 @@ const Pokedex = () => {
 
     let nextPagex1 = (() => {
 
-        if(totalPage2 - totalinit <=10 && totalPage2 < totalPage){
-        setTotalInit(totalinit + 1)
-        setTotalPage2(totalPage2 + 1)
-        console.log(totalPage2)
-        console.log(totalinit)
-        setPage(page + 1)
-        } else {
-            
+        if (totalPage2 - totalinit <= 10 && totalPage2 < totalPage) {
+            setTotalInit(totalinit + 1)
+            setTotalPage2(totalPage2 + 1)
+            console.log(totalPage2)
+            console.log(totalinit)
             setPage(page + 1)
-            
+        } else {
+
+            setPage(page + 1)
+
         }
-        
+
 
     })
 
@@ -94,7 +94,7 @@ const Pokedex = () => {
     //Fin Paginacion
 
     useEffect(() => {
-        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=400') //Max : 1154
+        axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=600') //Max : 1154
             .then(res => setPokemon(res.data.results))
 
         axios.get('https://pokeapi.co/api/v2/type')
@@ -134,35 +134,36 @@ const Pokedex = () => {
 
     })
 
+    //Url Video Header
+
+    const urlHeader = "https://drive.google.com/uc?export=download&id=1elTmQQcy48ZDeDGt8BrG9Kr6SxZird0w";
+    const urlImgHeader = "https://www.xtrafondos.com/wallpapers/familia-sanchez-rick-y-morty-9231.jpg";
+
     // console.log(pokemonSelect)
     console.log(pokemon)
     return (
         <div id='pokedex'>
-            <h1 className='pokedex-name'>Bienvenido {userName} a Pokedex</h1>
-            <div className="container-searchPokemon">
-                <input
-                    type="text"
-                    placeholder='Search Pokemon'
-                    onChange={(e => setInputSearch(e.target.value))}
-                    value={inputSearch} />
-                <button onClick={searchPokemon}>Search</button>
+            <div className="video-header">
+                <video src={urlHeader} autoPlay muted loop poster={urlImgHeader} className='video-intro'></video>
+                <h1 className='pokedex-name'>Bienvenido {userName} a Pokedex</h1>
+                <div className="container-searchPokemon">
+                    <input
+                        type="text"
+                        placeholder='Search Pokemon'
+                        onChange={(e => setInputSearch(e.target.value))}
+                        value={inputSearch} />
+                    <button onClick={searchPokemon}>Search</button>
 
-                <select onChange={filterType} name="" id="">
-                    {typePoke.map(search => (
-                        <option
-                            key={search.url}
-                            value={search.url}>
-                            {search.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <button onClick={page > 10 ? previewPagex1 : reviewPagex2} disabled={page === 1}>Prev Page</button>
-                {numberPagination.map(number => (
-                    <button key={number} onClick={() => setPage(number)}>{number}</button>
-                ))}
-                <button onClick={page < 10 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage}>Nex Page</button>
+                    <select onChange={filterType} name="" id="">
+                        {typePoke.map(search => (
+                            <option
+                                key={search.url}
+                                value={search.url}>
+                                {search.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
             <div className="container-pokedex">
                 {
@@ -172,6 +173,13 @@ const Pokedex = () => {
                             key={search.url || search.pokemon.url} />
                     ))
                 }
+            </div>
+            <div className='container-Pagination'>
+                <button onClick={page > 10 ? previewPagex1 : reviewPagex2} disabled={page === 1}>Prev Page</button>
+                {numberPagination.map(number => (
+                    <button key={number} onClick={() => setPage(number)}>{number}</button>
+                ))}
+                <button onClick={page < 10 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage}>Nex Page</button>
             </div>
         </div>
     );

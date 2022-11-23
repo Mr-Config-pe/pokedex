@@ -1,3 +1,22 @@
+/* ---------- INICIO FONTS TTF ----------*/
+
+@font-face {
+  font-family: "pokemonsolid";   /*Can be any text*/
+  src: local("pokemonsolid"),
+    url("../fonts/pokemon/PokemonSolid.ttf") format("truetype"); 
+}
+
+@font-face {
+  font-family: "pokemonhollow";   /*Can be any text*/
+  src: local("pokemonhollow"),
+    url("../fonts/pokemon/PokemonHollow.ttf") format("truetype");
+  
+}
+
+/* ---------- FIN FONTS TTF ----------*/
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -6,10 +25,65 @@
 
 
 #inputname{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  background-image: url(../images/background-login.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+
+.container-inputname{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ 
+  margin: 0 auto;
+  padding-right: 25%;
+  padding-bottom: 10%;
+  font-family: 'pokemonhollow'
+}
+
+
+.container-text-playername{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  
+}
+
+.box-inputname{
+width: auto;
+height: 2em;
+}
+
+
+.btn-inputname{
+  background-color: transparent;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  /* background-image: linear-gradient(
+    #a23c26,
+    #f6f7f9,
+    #a23c26
+  ); */
+  cursor: pointer;
+  border: 2px solid;
+  font-weight: bold;
+  font-family: 'pokemonsolid';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  font-size: 18px;
 }

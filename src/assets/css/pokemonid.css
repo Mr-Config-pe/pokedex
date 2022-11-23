@@ -59,11 +59,11 @@ border-radius: 20px;
 }
 
 .pokemon-img{
-    width: 120px;
-    height: 180px;
+    width: 180px;
+    height: 200px;
     position:absolute;
-    top: 70px;
-    left: 100px;
+    top: 65px;
+    left: 73px;
     z-index: 3;
 }
 

@@ -5,9 +5,9 @@
     align-items: center;
 }
 
-.pokedex-name{
+/* .pokedex-name{
     margin: 100px auto;
-}
+} */
 .container-pokedex{
     max-width: 1500px;
     background-color: antiquewhite;
@@ -16,6 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1em;
+    padding-top: 100px;
     
 }
 

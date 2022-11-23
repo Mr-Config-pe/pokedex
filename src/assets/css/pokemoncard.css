@@ -1,19 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap'); /*font-family: 'Poppins', sans-serif;*/
+
+
+
 #pokemoncard{
-    background-color: rgb(7, 201, 201);
-    width: 300px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: flex-start; */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.container-pokemoncard{
+    
+    /* perspective: 1000px; */
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
     
 }
 
-/* .container-pokemoncard{
-    background-color: antiquewhite;
+.pokemoncard-clip{
+    width: 200px;
+    height: 280px;
+    position: relative;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+    transition: transform 0.6s;
+    border-radius: 10px;
+    
+}
+
+.cardbackpoke{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.pokecard_front, .pokecard_back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.pokecard_back{
+    background-color: #3a0052;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.container-pokemoncard:hover .pokemoncard-clip{
+    transform: rotateY(180deg);
+}
+
+.container-cardback{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 1em;
-} */
+    padding-top: 10px;
+}
+
+.pokemon-cardback{
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.cover-link{
+    width: 100%;
+    height: 100%;
+}
+
+/* Prueba */
+
+.container{
+    width: 200px;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* transform: translate(-50%, -50%); */
+  }
+  
+  .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: #f7f7f2;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 1px solid #D9D9C1;
+    box-shadow: 0px 0px 0px 10px #EBEBE0;
+  }
+  
+  .pokemon-name{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 5px 0px;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 8px;
+  }
+  
+  .pokemon-name span{
+    position: relative;
+    font-weight: 700;
+    font-size: 2em;
+    opacity: 0;
+    animation: 500ms ease-in-out 500ms fromTop forwards;
+  }
+  
+  @keyframes fromTop{
+    from{
+      top: -30px;
+    }
+    
+    to{
+      opacity: 1;
+      top: 10px;
+    }
+  }
+  
+  ul{
+    list-style-type: none;
+  }
+  
+  .bloc-info{
+    width: 100%;
+    height: 100%;
+    background-color: #3a0052;
+  }
+  
+  .pokemon-stats{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    
+  }
+  
+  /* .pokemon-img img{
+    display: none;
+    position: relative;
+    opacity: 0;
+    width: 150px;
+    animation: 500ms ease-in-out 700ms fromLeft forwards;
+  } */
+  
+  @keyframes fromLeft{
+    from{
+      left: -30px;
+    }
+    
+    to{
+      opacity: 1;
+      left: 0px;
+    }
+  }
+  
+  .pokemon-type button{
+    position: relative;
+    background-color: #5A5465;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 20px;
+    width: 120px;
+    font-size: 14px;
+    color: #f7f7f2;
+    display: flex;
+    justify-content: space-evenly;
+    opacity: 0;
+    outline: none;
+    animation: 500ms ease-in-out 800ms fromRight forwards;
+  }
+  
+  @keyframes fromRight{
+    from{
+      right: -30px;
+    }
+    
+    to{
+      opacity: 1;
+      right: 0px;
+    }
+  }
+  
+  .container-progres{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    
+  }
+
+  .progress{
+      background-color: #eeeeee;
+      border-radius: 16px;
+      width: 50%!important;
+      margin: auto;
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .progress span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 0px;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: bold;
+    z-index: 2;
+  }
+  
+  .progressbar {
+      display: table;
+      clear: both;
+      height: 24px;
+      padding: 0.01em 16px;
+      border-radius: 16px;
+      opacity: 0;
+  }
+  
+  @keyframes grow-1{
+    from{
+      opacity: 0.5;
+      width: 0%;
+    }
+    
+    to{
+      opacity: 1;
+      width: 50%;
+    }
+  }
+  
+  @keyframes grow-2{
+    from{
+      opacity: 0.5;
+      width: 0%;
+    }
+    
+    to{
+      opacity: 1;
+      width: 65%;
+    }
+  }
+  
+  @keyframes grow-3{
+    from{
+      opacity: 0.5;
+      width: 0%;
+    }
+    
+    to{
+      opacity: 1;
+      width: 55%;
+    }
+  }
+  
+  .bar-pv{
+    background-color: lightcoral;
+    animation: grow-1 1.2s ease-in-out 1s forwards;
+  }
+  
+  .bar-att{
+    background-color: lightblue;
+    animation: grow-2 1.2s ease-in-out 1.2s forwards;
+  }
+  
+  .bar-def {
+    background-color: lightgreen;
+    animation: grow-3 1.2s ease-in-out 1.4s forwards;
+  }
+  
+  .pokemon-info{
+    padding: 0 10px;
+    text-align: center;
+  }
+  
+  .pokemon-info p{
+    font-weight: 200;
+    font-style: italic;
+    position: relative;
+    opacity: 0;
+    animation: 500ms ease-in-out 900ms fromRight forwards;
+  }
+
+  /* Prueba */
+

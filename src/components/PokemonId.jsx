@@ -20,8 +20,8 @@ const PokemonId = () => {
             <figure className="figure1-id">
             
                 <img className="background-poke" src={backgroundPoke} alt="" />
-                <img className="pokemon-img" src={pokemon.sprites?.other.dream_world.front_default} alt="" />
-                <img className="background-gif" src="https://acegif.com/wp-content/uploads/gif/outerspace-72.gif" alt="" />
+                <img className="pokemon-img" src={pokemon.sprites?.other.home.front_default} alt="" />
+                <img className="background-gif" src="https://assets.codepen.io/13471/sparkles.gif" alt="" />
                 <h3>{pokemon.name}</h3>
                 <div className='hp-poke'><b className='hp-letter'>HP</b><b className='hp-stat'> {pokemon.stats?.[0].base_stat}</b></div>
                 <div className="xp-poke"><b className='xp-letter'>XP</b><b className='xp-base'> {pokemon.base_experience}</b></div>

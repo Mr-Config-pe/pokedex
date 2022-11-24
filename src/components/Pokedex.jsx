@@ -16,6 +16,11 @@ const Pokedex = () => {
 
     const [typePoke, setTypePoke] = useState([]);
 
+    //Estado para Buscar Letra
+
+    const [searchLetterPoke, setSearchLetterPoke] = useState([]);
+
+
     // Inicio Paginacion
 
     const [page, setPage] = useState(1);
@@ -108,21 +113,21 @@ const Pokedex = () => {
 
     const navigate = useNavigate();
 
-    //Funcion de Filtrado de Pokemones
+    //Funcion para buscar pokemones
+
 
     const searchPokemon = (() => {
 
-        const pokeIndex = pokemon.findIndex(searchIndex => searchIndex.name === inputSearch)
+    // const pokemonOne = pokemon.find(pokesearch1 => pokesearch1.name == inputSearch);
+    // const otraVaina= pokemon.pokemon?.find(pokesearch2 => pokesearch2.name == inputSearch);
 
-        if (inputSearch > 0 && inputSearch <= pokemon.length) {
-            navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
-        } else if (pokeIndex >= 0) {
-            navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
-        } else {
-            alert("Pokemon not found")
-        }
+    navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
+        
+  
 
+        //Falta Filtrar
     })
+
 
     //Funcion para filtrar los tipos
 
@@ -132,16 +137,18 @@ const Pokedex = () => {
         axios.get(url)
             .then(res => setPokemon(res.data.pokemon));
         setPage(1)
+        setTotalInit(1)
+        setTotalPage2(5)
 
     })
 
     //Url Video Header
 
-    const urlHeader = "https://drive.google.com/uc?export=download&id=1elTmQQcy48ZDeDGt8BrG9Kr6SxZird0w";
-    const urlImgHeader = "https://www.xtrafondos.com/wallpapers/familia-sanchez-rick-y-morty-9231.jpg";
+    const urlHeader = "https://bit.ly/3Vnyj4d";
+    const urlImgHeader = "http://bit.ly/3V3OEvn";
 
     // console.log(pokemonSelect)
-    console.log(pokemon)
+    // console.log(pokemon)
     return (
         <div id='pokedex'>
             <div className="video-header">
@@ -188,7 +195,7 @@ const Pokedex = () => {
                 <button onClick={page > 5 ? previewPagex1 : reviewPagex2} disabled={page === 1}>Prev Page</button>
                 <div className="container-list-btn">
                     {numberPagination.map(number => (
-                        <button key={number} onClick={() => setPage(number)} className="btn-pagination-circle">{number}</button>
+                        <button key={number} onClick={() => setPage(number)} className={page == number ? "btn-pagination-circle2" : "btn-pagination-circle"}>{number}</button> /*----- Recordando -----*/
                     ))}
                 </div>
                 <button onClick={page < 5 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage}>Nex Page</button>

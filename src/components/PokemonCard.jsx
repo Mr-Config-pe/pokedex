@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../assets/css/pokemoncard.css'
 import { Link } from 'react-router-dom';
-import cardbackpoke from '../assets/images/cardback-poke.jpg'
+import cardbackpoke from '../assets/images/cardback-poke.avif'
 
 
 const PokemonCard = ({ url }) => {

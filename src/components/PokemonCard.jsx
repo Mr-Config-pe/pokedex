@@ -39,7 +39,7 @@ const PokemonCard = ({ url }) => {
 
                                 <div className="container">
 
-                                    <di className="card">
+                                    <div className="card">
 
                                         <div className="pokemon-name"><span>{pokemon.name}</span></div>
                                         <div className="container-cardback">
@@ -74,7 +74,7 @@ const PokemonCard = ({ url }) => {
                                             </div>
                                         </div>
 
-                                    </di>
+                                    </div>
 
                                 </div>
                                 {/* Prueba */}

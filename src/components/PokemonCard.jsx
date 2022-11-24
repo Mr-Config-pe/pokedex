@@ -14,6 +14,11 @@ const PokemonCard = ({ url }) => {
             .then(res => setPokemon(res.data));
     }, [])
 
+    //Estilos Barra Progreso
+
+    // const styleGrow1 = `--from-width:0%; --to-width:${pokemon.stats?.[1].base_stat}%`
+
+
     // console.log(url);
 
     return (
@@ -32,11 +37,11 @@ const PokemonCard = ({ url }) => {
                                 {/* Prueba */}
 
 
-                                <div class="container">
+                                <div className="container">
 
-                                    <di class="card">
+                                    <di className="card">
 
-                                        <div class="pokemon-name"><span>{pokemon.name}</span></div>
+                                        <div className="pokemon-name"><span>{pokemon.name}</span></div>
                                         <div className="container-cardback">
                                             <img className="pokemon-cardback" src={pokemon.sprites?.other.dream_world.front_default} alt="" />
                                         </div>
@@ -53,19 +58,19 @@ const PokemonCard = ({ url }) => {
                                             </div>
                                         </div> */}
                                         <div className="container-progres">
-                                            <div class="progress">
-                                                <span>PV : 95</span>
-                                                <div class="progressbar bar-pv"></div>
+                                            <div className="progress">
+                                                <span>Attack : {pokemon.stats?.[1].base_stat}</span>
+                                                <div className="progressbar bar-att" style={{ width: `${pokemon.stats?.[1].base_stat}%` }}></div>
                                             </div>
 
-                                            <div class="progress">
-                                                <span>Attaque : 65</span>
-                                                <div class="progressbar bar-att"></div>
+                                            <div className="progress">
+                                                <span>Defense : {pokemon.stats?.[2].base_stat}</span>
+                                                <div className="progressbar bar-def" style={{ width: `${pokemon.stats?.[2].base_stat}%` }}></div>
                                             </div>
 
-                                            <div class="progress">
-                                                <span>Défense : 110</span>
-                                                <div class="progressbar bar-def"></div>
+                                            <div className="progress">
+                                                <span>Speed : {pokemon.stats?.[5].base_stat}</span>
+                                                <div className="progressbar bar-spe" style={{ width: `${pokemon.stats?.[5].base_stat}%` }}></div>
                                             </div>
                                         </div>
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import backgroundPoke from '../assets/images/pokemon-front-card2.png'
+import backgroundPoke from '../assets/images/pokemon-front-card3.png'
 import '../assets/css/pokemonid.css'
 
 const PokemonId = () => {
@@ -35,8 +35,8 @@ const PokemonId = () => {
                     <b><b>Height</b>: {pokemon.height}<b>m</b></b>
                 </div>
                 <div className="type-poke">
-                    <b>Type</b>
-                    <b>{pokemon.types?.[0].type.name}</b>
+                    <b>{pokemon.types?.[0]?.type.name}</b>
+                    <b>{pokemon.types?.[1]?.type.name}</b>
                 </div>
             </figure>
 

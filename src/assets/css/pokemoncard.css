@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap'); /*font-family: 'Poppins', sans-serif;*/
 
 
-
 #pokemoncard{
     padding: 0;
     margin: 0;
@@ -197,7 +196,8 @@
     display: flex;
     flex-direction: column;
     justify-content:center;
-    
+    margin-left: -40px;
+    width: 100%;
   }
 
   .progress{
@@ -208,6 +208,7 @@
       position: relative;
       margin-top: 10px;
       margin-bottom: 10px;
+     
   }
   
   .progress span {
@@ -230,7 +231,8 @@
       opacity: 0;
   }
   
-  @keyframes grow-1{
+
+  /* @keyframes grow-1{
     from{
       opacity: 0.5;
       width: 0%;
@@ -238,11 +240,11 @@
     
     to{
       opacity: 1;
-      width: 50%;
+      width: 49%;
     }
-  }
+  } */
   
-  @keyframes grow-2{
+  /* @keyframes grow-2{
     from{
       opacity: 0.5;
       width: 0%;
@@ -252,9 +254,9 @@
       opacity: 1;
       width: 65%;
     }
-  }
+  } */
   
-  @keyframes grow-3{
+  /* @keyframes grow-3{
     from{
       opacity: 0.5;
       width: 0%;
@@ -265,20 +267,25 @@
       width: 55%;
     }
   }
-  
-  .bar-pv{
+   */
+
+  .bar-att{
     background-color: lightcoral;
-    animation: grow-1 1.2s ease-in-out 1s forwards;
+    animation: grow-1 1.2s ease-in-out 1s forwards ;
+    opacity: 1;
+    
   }
   
-  .bar-att{
+  .bar-def{
     background-color: lightblue;
     animation: grow-2 1.2s ease-in-out 1.2s forwards;
+    opacity: 1;
   }
   
-  .bar-def {
+  .bar-spe {
     background-color: lightgreen;
     animation: grow-3 1.2s ease-in-out 1.4s forwards;
+    opacity: 1;
   }
   
   .pokemon-info{

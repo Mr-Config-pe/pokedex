@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import backgroundPoke from '../assets/images/pokemon-front-card.avif'
 import '../assets/css/pokemonid.css'
+
 
 const PokemonId = () => {
 
@@ -14,7 +15,16 @@ const PokemonId = () => {
             .then(res => setPokemon(res.data));
     }, [])
 
-    console.log(pokemon)
+    //Redirigiendo a Pagina Principal
+
+    const navigate = useNavigate();
+
+    const goToHome = (()=>{
+        navigate("../pokedex")
+
+    })
+
+    // console.log(pokemon)
     return (
         <div id='pokemonid'>
             <figure className="figure1-id">
@@ -38,8 +48,9 @@ const PokemonId = () => {
                     <b>{pokemon.types?.[0]?.type.name}</b>
                     <b>{pokemon.types?.[1]?.type.name}</b>
                 </div>
+                <button onClick={goToHome}>Home</button>
             </figure>
-
+            
         </div>
     );
 };

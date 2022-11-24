@@ -24,6 +24,22 @@
     color: var(--color-text);
 }
 
+#pokemonid button{
+    position: absolute;
+    bottom: -150px;
+    left: 32%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: auto auto;
+    font-size: 20px;
+    border: 3px solid;
+    background-color: transparent;
+    border-color: white;
+    
+}
+
 .background-poke{
     position: relative;
     width: 300px;

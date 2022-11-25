@@ -17,7 +17,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding-top: 250px;
+    padding-top: 280px; /*Espaciado de Carta Columna*/
     
 }
 
@@ -45,7 +45,7 @@
 .welcome-trainer{
     width: 80%;
     position: relative;
-    bottom: -41%;
+    bottom: -51%;
     z-index: 2;
    
 }
@@ -61,7 +61,7 @@
     color: #f4f1da;
     top: 18px; /*Firs mobile - minwidth*/
     z-index: 2;
-    
+ 
 }
 
 main{
@@ -78,7 +78,7 @@ main{
     justify-content: center;
     align-items: center;
     justify-items: center;
-    top: 130px;
+    top: 160px;
     gap: 2rem;
     background-color: transparent; /*Fondo Container SearchPokemon - Segunda Division*/
     /* padding: auto 0; */
@@ -225,12 +225,14 @@ main{
     .pokedex-name{
   font-size: 1.2rem;
   transition: 2s;
+  top: 30px;
 }
 }
 
 @media(min-width: 500px){
     .pokedex-name{
   font-size: 1.7rem;
+  top : 50px;
 }
 
 }
@@ -238,7 +240,7 @@ main{
 @media(min-width: 750px){
     .pokedex-name{
   font-size: 2.5rem;
-  top: 35px;
+  top: 75px;
 }
 
 }
@@ -246,6 +248,7 @@ main{
 @media(min-width: 1200px){
     .pokedex-name{
   font-size: 3rem;
+  top: 90px;
 }
 
 }

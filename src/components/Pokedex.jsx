@@ -115,16 +115,58 @@ const Pokedex = () => {
 
     //Funcion para buscar pokemones
 
-
     const searchPokemon = (() => {
 
-    // const pokemonOne = pokemon.find(pokesearch1 => pokesearch1.name == inputSearch);
-    // const otraVaina= pokemon.pokemon?.find(pokesearch2 => pokesearch2.name == inputSearch);
+        // const pokemonFilter = pokemon.filter(item => {
 
-    navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
-        
-  
+        //     if (item?.name === inputSearch) {
+        //         return item.name
+        //     } else if (item.pokemon?.name === inputSearch) {
+        //         return item.pokemon.name
+        //     }
+        // })
 
+
+        // if (pokemonFilter[0]?.name === inputSearch) {
+
+        //     navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
+
+        // } else if (pokemonFilter[0]?.pokemon.name === inputSearch) {
+
+        //     navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
+
+        // } else {
+
+        //     console.log("Pokemon not found")
+        // }
+
+        const pokemonFilter = pokemon.findIndex(item => {
+
+            if (item?.name === inputSearch) {
+                return item
+            } else if (item.pokemon?.name === inputSearch) {
+                return item
+            }
+        })
+
+        // console.log(pokemonFilter)
+
+        if (inputSearch > 0 && inputSearch <= 1154) {
+
+            navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
+
+        } else if (pokemonFilter >= 0 && pokemonFilter < 1154) {
+
+            navigate(`/pokedex/${inputSearch.toLocaleLowerCase()}`)
+
+        } else {
+
+            alert("Pokemon not found")
+        }
+
+
+
+        // console.log(pokemon)
         //Falta Filtrar
     })
 
@@ -168,7 +210,7 @@ const Pokedex = () => {
                             onChange={(e => setInputSearch(e.target.value))}
                             value={inputSearch}
                         />
-                        <button onClick={searchPokemon}>Search</button>
+                        <button onClick={searchPokemon} className="btn-search-poke">Search</button>
                     </div>
                     <select onChange={filterType} name="">
                         {typePoke.map(search => (
@@ -192,13 +234,13 @@ const Pokedex = () => {
             </main>
 
             <div className='container-Pagination'>
-                <button onClick={page > 5 ? previewPagex1 : reviewPagex2} disabled={page === 1}>Prev Page</button>
+                <button onClick={page > 5 ? previewPagex1 : reviewPagex2} disabled={page === 1} className="btn-prev-pagination">Prev Page</button>
                 <div className="container-list-btn">
                     {numberPagination.map(number => (
                         <button key={number} onClick={() => setPage(number)} className={page == number ? "btn-pagination-circle2" : "btn-pagination-circle"}>{number}</button> /*----- Recordando -----*/
                     ))}
                 </div>
-                <button onClick={page < 5 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage}>Nex Page</button>
+                <button onClick={page < 5 ? () => setPage(page + 1) : nextPagex1} disabled={page === totalPage} className="btn-next-pagination">Nex Page</button>
             </div>
         </div>
     );
